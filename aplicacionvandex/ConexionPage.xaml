@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="aplicacionvandex.ConexionPage" Title="Conexión"
+             BackgroundColor="{StaticResource VantexFondo}">
+    <ScrollView>
+        <VerticalStackLayout Padding="18,20" Spacing="14" MaximumWidthRequest="760">
+            <Label Text="Conexión" Style="{StaticResource VantexTitulo}" SemanticProperties.HeadingLevel="Level1"/>
+            <Border Style="{StaticResource VantexTarjeta}">
+                <VerticalStackLayout Spacing="10">
+                    <!-- El Entry recibe la dirección del servidor. Validarla permite comprobar que ahí corre Vantex. -->
+                    <Label Text="Dirección de Vantex" Style="{StaticResource VantexTextoNormal}" FontAttributes="Bold"
+                           SemanticProperties.HeadingLevel="Level2"/>
+                    <Entry x:Name="entryServidor" Keyboard="Url" Placeholder="https://tu-servidor"
+                           Style="{StaticResource VantexEntrada}" SemanticProperties.Description="Dirección de Vantex"/>
+                    <Label x:Name="lblAyuda" Style="{StaticResource VantexNota}"/>
+                    <Button x:Name="btnProbar" Text="Probar y guardar dirección" Clicked="OnProbarClicked" Style="{StaticResource VantexBotonSecundario}"/>
+                </VerticalStackLayout>
+            </Border>
+            <Border Style="{StaticResource VantexTarjeta}">
+                <VerticalStackLayout Spacing="10">
+                    <!-- Este bloque abre la web para generar el código y permite canjearlo o quitar el acceso guardado. -->
+                    <Label Text="Vincular portafolio" Style="{StaticResource VantexTextoNormal}" FontAttributes="Bold"
+                           SemanticProperties.HeadingLevel="Level2"/>
+                    <Label Text="En la web, inicia sesión y genera un código en Mi portafolio. El acceso móvil es de lectura y dura 30 días."
+                           Style="{StaticResource VantexNota}"/>
+                    <Button x:Name="btnAbrirWeb" Text="Abrir Mi portafolio en la web" Clicked="OnAbrirWebClicked"
+                            Style="{StaticResource VantexBotonSecundario}"/>
+                    <Entry x:Name="entryCodigo" MaxLength="16" Placeholder="ABCDE-12345"
+                           Style="{StaticResource VantexEntrada}" SemanticProperties.Description="Código de vinculación temporal"/>
+                    <Button x:Name="btnVincular" Text="Vincular cuenta" Clicked="OnVincularClicked" Style="{StaticResource VantexBoton}"/>
+                    <Button x:Name="btnDesvincular" Text="Desvincular" Clicked="OnDesvincularClicked"
+                            Style="{StaticResource VantexBotonSecundario}" IsVisible="False"/>
+                </VerticalStackLayout>
+            </Border>
+            <!-- C# muestra el indicador y el resultado de la operación mediante los controles con x:Name. -->
+            <ActivityIndicator x:Name="cargando" IsVisible="False" Color="{StaticResource VantexVerde}"/>
+            <Label x:Name="lblEstado" Style="{StaticResource VantexNota}"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

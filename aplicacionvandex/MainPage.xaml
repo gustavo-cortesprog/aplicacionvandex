@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<FlyoutPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:local="clr-namespace:aplicacionvandex"
+            x:Class="aplicacionvandex.MainPage"
+            FlyoutLayoutBehavior="Popover">
+    <!-- Flyout es el menú lateral. Detail cambia la página central, como en el examen. -->
+    <FlyoutPage.Flyout>
+        <ContentPage Title="Menú" BackgroundColor="{StaticResource VantexFondo}">
+            <ScrollView>
+                <VerticalStackLayout Padding="24" Spacing="12">
+                    <Label Text="Vantex Móvil" Style="{StaticResource VantexTitulo}"
+                           SemanticProperties.HeadingLevel="Level1"/>
+                    <Label Text="Portafolio simulado" Style="{StaticResource VantexNota}" Margin="0,0,0,14"/>
+                    <!-- Cada atributo Clicked enlaza el botón con su método de C# en MainPage.xaml.cs. -->
+                    <Button Text="Mi portafolio" Clicked="OnPortafolioClicked" Style="{StaticResource VantexBotonSecundario}"/>
+                    <Button Text="Vantex web" Clicked="OnWebClicked" Style="{StaticResource VantexBotonSecundario}"/>
+                    <Button Text="Radar y alertas" Clicked="OnAlertasClicked" Style="{StaticResource VantexBotonSecundario}"/>
+                    <Button Text="Conexión" Clicked="OnConexionClicked" Style="{StaticResource VantexBotonSecundario}"/>
+                </VerticalStackLayout>
+            </ScrollView>
+        </ContentPage>
+    </FlyoutPage.Flyout>
+    <!-- La primera pantalla del área central es el portafolio. NavigationPage muestra la barra de navegación y permite volver. -->
+    <FlyoutPage.Detail>
+        <NavigationPage BarBackgroundColor="{StaticResource VantexFondo}" BarTextColor="{StaticResource VantexTexto}">
+            <x:Arguments><local:PanelPage /></x:Arguments>
+        </NavigationPage>
+    </FlyoutPage.Detail>
+</FlyoutPage>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:aplicacionvandex"
+             x:Class="aplicacionvandex.PanelPage" Title="Portafolio"
+             BackgroundColor="{StaticResource VantexFondo}">
+    <!-- CollectionView permite que el resumen y las posiciones se desplacen como una sola lista. -->
+    <CollectionView x:Name="listaPosiciones" SelectionMode="None"
+                    MaximumWidthRequest="820" HorizontalOptions="Fill">
+        <!-- El encabezado reúne el radar, los botones y el estado de la consulta encima de las posiciones. -->
+        <CollectionView.Header>
+            <VerticalStackLayout Padding="16,20,16,12" Spacing="12">
+                <Label Text="Mi portafolio" Style="{StaticResource VantexTitulo}" SemanticProperties.HeadingLevel="Level1"/>
+                <Label Text="Consulta el rendimiento de tus posiciones virtuales." Style="{StaticResource VantexNota}"/>
+                <Border Style="{StaticResource VantexTarjeta}">
+                    <VerticalStackLayout Spacing="9">
+                        <Label Text="Radar de rendimiento" FontAttributes="Bold" Style="{StaticResource VantexTextoNormal}"
+                               SemanticProperties.HeadingLevel="Level2"/>
+                        <Label x:Name="lblRadar" Text="Esperando posiciones con cotización." Style="{StaticResource VantexNota}"/>
+                        <ProgressBar x:Name="barraRadar" ProgressColor="{StaticResource VantexVerde}"
+                                     SemanticProperties.Description="Proporción del umbral de rendimiento"/>
+                    </VerticalStackLayout>
+                </Border>
+                <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+                    <Button x:Name="btnActualizar" Text="Actualizar" Clicked="OnActualizarClicked" Style="{StaticResource VantexBoton}"/>
+                    <Button Grid.Column="1" Text="Conexión" Clicked="OnConexionClicked" Style="{StaticResource VantexBotonSecundario}"/>
+                </Grid>
+                <ActivityIndicator x:Name="cargando" IsVisible="False" Color="{StaticResource VantexVerde}"/>
+                <Label x:Name="lblEstado" Style="{StaticResource VantexNota}"/>
+            </VerticalStackLayout>
+        </CollectionView.Header>
+        <!-- DataTemplate repite esta tarjeta por posición. Binding lee sus propiedades y x:DataType indica el tipo de objeto. -->
+        <CollectionView.ItemTemplate>
+            <DataTemplate x:DataType="local:PosicionMovil">
+                <Border Style="{StaticResource VantexTarjeta}" Margin="16,0,16,8">
+                    <VerticalStackLayout Spacing="4">
+                        <Label Text="{Binding Simbolo}" FontAttributes="Bold" Style="{StaticResource VantexTextoNormal}"/>
+                        <Label Text="{Binding Detalle}" Style="{StaticResource VantexNota}"/>
+                        <Label Text="{Binding ResultadoTexto}" TextColor="{Binding ColorResultado}" FontAttributes="Bold"/>
+                    </VerticalStackLayout>
+                </Border>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+</ContentPage>

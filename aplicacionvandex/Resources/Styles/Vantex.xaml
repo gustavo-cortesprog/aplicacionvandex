@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    xmlns:shapes="clr-namespace:Microsoft.Maui.Controls.Shapes;assembly=Microsoft.Maui.Controls">
+    <!-- Colores compartidos con Vantex web. Los estados conservan contraste en modo claro u oscuro del sistema. -->
+    <Color x:Key="VantexFondo">#101722</Color>
+    <Color x:Key="VantexPanel">#172334</Color>
+    <Color x:Key="VantexBorde">#2C4058</Color>
+    <Color x:Key="VantexTexto">#F1F6FC</Color>
+    <Color x:Key="VantexMutado">#ADC0D5</Color>
+    <Color x:Key="VantexVerde">#8CEABB</Color>
+    <!-- Los estilos de texto distinguen títulos, contenido y notas. -->
+    <Style x:Key="VantexTitulo" TargetType="Label">
+        <Setter Property="FontSize" Value="28"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="TextColor" Value="{StaticResource VantexTexto}"/>
+    </Style>
+    <Style x:Key="VantexTextoNormal" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource VantexTexto}"/>
+        <Setter Property="FontSize" Value="14"/>
+    </Style>
+    <Style x:Key="VantexNota" TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource VantexMutado}"/>
+        <Setter Property="FontSize" Value="13"/>
+    </Style>
+    <!-- El botón secundario hereda el tamaño del principal y cambia colores y borde. -->
+    <Style x:Key="VantexBoton" TargetType="Button">
+        <Setter Property="TextColor" Value="#0D2822"/>
+        <Setter Property="BackgroundColor" Value="{StaticResource VantexVerde}"/>
+        <Setter Property="CornerRadius" Value="10"/>
+        <Setter Property="MinimumHeightRequest" Value="44"/>
+    </Style>
+    <Style x:Key="VantexBotonSecundario" TargetType="Button" BasedOn="{StaticResource VantexBoton}">
+        <Setter Property="TextColor" Value="{StaticResource VantexTexto}"/>
+        <Setter Property="BackgroundColor" Value="{StaticResource VantexPanel}"/>
+        <Setter Property="BorderColor" Value="{StaticResource VantexBorde}"/>
+        <Setter Property="BorderWidth" Value="1"/>
+    </Style>
+    <!-- La tarjeta comparte fondo, margen interno y esquinas redondeadas. -->
+    <Style x:Key="VantexTarjeta" TargetType="Border">
+        <Setter Property="Background" Value="{StaticResource VantexPanel}"/>
+        <Setter Property="Stroke" Value="{StaticResource VantexBorde}"/>
+        <Setter Property="Padding" Value="16"/>
+        <Setter Property="StrokeShape">
+            <Setter.Value><shapes:RoundRectangle CornerRadius="15"/></Setter.Value>
+        </Setter>
+    </Style>
+    <!-- Las entradas y selectores usan una altura mínima común para que se puedan tocar con comodidad. -->
+    <Style x:Key="VantexEntrada" TargetType="Entry">
+        <Setter Property="TextColor" Value="{StaticResource VantexTexto}"/>
+        <Setter Property="PlaceholderColor" Value="{StaticResource VantexMutado}"/>
+        <Setter Property="MinimumHeightRequest" Value="44"/>
+    </Style>
+    <Style x:Key="VantexSelector" TargetType="Picker">
+        <Setter Property="TextColor" Value="{StaticResource VantexTexto}"/>
+        <Setter Property="TitleColor" Value="{StaticResource VantexMutado}"/>
+        <Setter Property="MinimumHeightRequest" Value="44"/>
+    </Style>
+</ResourceDictionary>

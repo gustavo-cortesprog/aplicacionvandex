@@ -1,0 +1,9 @@
+﻿<!-- Punto de entrada visual de Windows. Su clase C# carga la aplicación MAUI compartida. -->
+<maui:MauiWinUIApplication
+    x:Class="aplicacionvandex.WinUI.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:maui="using:Microsoft.Maui"
+    xmlns:local="using:aplicacionvandex.WinUI">
+
+</maui:MauiWinUIApplication>

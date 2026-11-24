@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="aplicacionvandex.WebPage" Title="Vantex web"
+             BackgroundColor="{StaticResource VantexFondo}">
+    <!-- La primera fila ajusta su altura a los controles. WebView ocupa el espacio restante. -->
+    <Grid RowDefinitions="Auto,*">
+        <VerticalStackLayout Padding="16,8" Spacing="6">
+            <Label x:Name="lblEstado" IsVisible="False" Style="{StaticResource VantexNota}"/>
+            <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+                <Button Text="Volver en la web" Clicked="OnVolverClicked" Style="{StaticResource VantexBotonSecundario}"/>
+                <Button Grid.Column="1" Text="Actualizar" Clicked="OnActualizarClicked" Style="{StaticResource VantexBotonSecundario}"/>
+            </Grid>
+        </VerticalStackLayout>
+        <!-- WebView abre el sitio que ya existe y conserva su sesión de navegador. -->
+        <WebView x:Name="webVantex" Grid.Row="1" Navigating="OnNavegando" Navigated="OnNavegado"
+                 SemanticProperties.Description="Sitio de Vantex"/>
+    </Grid>
+</ContentPage>
